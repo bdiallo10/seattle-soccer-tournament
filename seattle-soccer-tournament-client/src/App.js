@@ -1,4 +1,5 @@
 import React from 'react';
+import Routes from './config/routes'
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
 // import Button from 'react-bootstrap/Button';
@@ -15,8 +16,9 @@ function App() {
         <h1 className="header">Welcome to Seattle Soccer Tournament</h1>
         <p>The One Place to Create a Tournament, Have Team Register and add their players</p>
       </Jumbotron>
+      <Routes />
     </div>
   );
 }
 
-export default App;
+export default App 
