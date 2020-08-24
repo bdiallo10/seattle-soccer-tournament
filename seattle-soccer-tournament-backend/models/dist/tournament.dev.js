@@ -4,10 +4,21 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 var tournamentSchema = new Schema({
-  name: {
+  title: {
     type: String,
-    required: true,
-    unique: true
+    required: true
+  },
+  administrator: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: String,
+    required: true
+  },
+  location: {
+    type: String,
+    required: true
   } // add download a picture later
 
 }, {
