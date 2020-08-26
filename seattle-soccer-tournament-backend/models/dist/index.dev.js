@@ -1,6 +1,8 @@
 "use strict";
 
-var mongoose = require('mongoose'); //mongoose connection string
+var mongoose = require('mongoose');
+
+require('dotenv').config(); //mongoose connection string
 
 
 var uri = process.env.ATLAS_URI;
@@ -15,7 +17,7 @@ connection.once('open', function () {
   console.log("MongoDB database connection established successfully");
 });
 module.exports = {
-  tournament: require('./tournament'),
-  team: require('./team'),
-  player: require('./player')
+  Tournament: require('./tournament'),
+  Team: require('./team'),
+  Player: require('./player')
 };

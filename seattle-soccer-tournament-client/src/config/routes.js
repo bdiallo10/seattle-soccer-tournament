@@ -27,18 +27,18 @@ export default () => (
         <div>
             <Route exact path='/' component={ Home } />
 
-            <Route exact path='/tournament' component={ tournamentShow } />
-            <Route  path='/tournament/:id' component={ tournamentIndex } />
+            <Route exact path='/tournament' component={ tournamentIndex } />
+            <Route  path='/tournament/:id' component={ tournamentShow } />
             <Route  path='/tournament/new' component={ tournamentCreate } />
             <Route  path='/tournament/update' component={ tournamentUpdate } />
             
-            <Route exact path='/team' component={ teamShow } />
-            <Route  path='/team/:id' component={ teamIndex } />
+            <Route exact path='/team' component={ teamIndex } />
+            <Route  path='/team/:id' component={ teamShow } />
             <Route  path='/team/new' component={ teamCreate } />
             <Route  path='/team/update' component={ teamUpdate } />
 
-            <Route exact path='/player' component={ playerShow } />
-            <Route  path='/player/:id' component={ playerIndex } />
+            <Route exact path='/player' component={ playerIndex } />
+            <Route  path='/player/:id' component={ playerShow } />
             <Route  path='/player/new' component={ playerCreate} />
             <Route  path='/player/update' component={ playerUpdate } />
         </div>

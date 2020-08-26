@@ -6,28 +6,39 @@ finish controllers//DONE
 finish routes//DONE
 finish servers//DONE
 
-BLOCKER, BRING IT UP TO TUTORING
-TEST THE BACKEND AND MAKE SURE IT'S WORKING
 
 frontEnd Routers are now properly working//DONE
-
 create all the pages that will be needed//DONE
 create the routes//Done
-
-model files are created
-model fill up the models file
-create header component
-create footer component
-create a navbar
+create header component/DONE
+create footer component/DONE
+create a navbar//DONE
 Install bootstrap//DONE
+
+model files are created/DONE
+model fill up the models file/DONE
+
+BLOCKER, BRING IT UP TO TUTORING
+TEST THE BACKEND AND MAKE SURE IT'S WORKING
+NAVBAR IS CREATED BUT IT'S NOT WORKING
 
 
 Step 2
 
-Make sure tournament is fully functional
-Make sure team is fully functional
-Make sure player is fully function
-Make sure you can create a tournament, add multiple team, add a player within each team
+Add all the forms for tournament, team and player//DONE
+Add all the add button, update button and delete button//DONE
+Make sure forms are send data to database//DONE
+
+Add the following button on tournament, team and players
+    a) edit
+    b) delete
+
+
+MODEL RELATIONSHIP IN REACT
+Keep in mind that that 
+ a) the same team can exist in all the tournament
+ b) Players can only be in one team
+
 
 Step 3
 Make sure user is fully functional

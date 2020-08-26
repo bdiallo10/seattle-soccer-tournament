@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 var teamSchema = new Schema({
-  name: {
+  teamName: {
     type: String,
     required: true
   },
@@ -16,7 +16,7 @@ var teamSchema = new Schema({
     type: String,
     required: true
   },
-  location: {
+  teamLocation: {
     type: String,
     required: true
   } // add downlong a picture for the team later

@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 var playerSchema = new Schema({
-  name: {
+  playerName: {
     type: String,
     required: true
   },
@@ -13,6 +13,10 @@ var playerSchema = new Schema({
     required: true
   },
   countryOfOrigin: {
+    type: String,
+    required: true
+  },
+  playerLocation: {
     type: String,
     required: true
   } // add download a picture for the player later

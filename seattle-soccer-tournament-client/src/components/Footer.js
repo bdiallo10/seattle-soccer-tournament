@@ -6,8 +6,7 @@ class Footer extends Component {
     render() {
         return (
             <div>
-                 <Container class="footer">
-                     <div>
+                 <Container className="footer">
                         <span>
                             <div>
                                 <p>Seattle Soccer Tournament</p>
@@ -19,7 +18,6 @@ class Footer extends Component {
                                 <p>Created by Boubacar Diallo</p>
                             </div>
                         </span>
-                    </div>
                 </Container>
             </div>
         );

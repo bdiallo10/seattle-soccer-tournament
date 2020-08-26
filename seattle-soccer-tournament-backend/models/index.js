@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+require('dotenv').config()
 
 //mongoose connection string
 const uri = process.env.ATLAS_URI;
@@ -16,7 +16,7 @@ connection.once('open', () => {
 })
 
 module.exports = {
-    tournament: require('./tournament'),
-    team: require('./team'),
-    player: require('./player')
+    Tournament: require('./tournament'),
+    Team: require('./team'),
+    Player: require('./player')
 }

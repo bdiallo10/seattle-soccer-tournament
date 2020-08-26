@@ -3,7 +3,7 @@ const db = require('../models')
 const index = (req, res) => {
   db.Tournament.find({}, (err, foundTournament) => {
     if (err) console.log('Error in finding tournament', err)
-
+    console.log(foundTournament)
     // if tournament is not found
     if(!foundTournament.length) return res.json({
       message: "No tournament found in the DB"

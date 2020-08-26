@@ -4,9 +4,9 @@ const db = require('../models')
 const index = (req, res) => {
     db.Team.find({}, (err, foundTeam) => {
         if(err) console.log('Error in finding team:', err)
-
-        //if tournament is not found
-        if(!foundTeam.lenght) return res.json({
+        console.log(foundTeam)
+        //if team is not found
+        if(!foundTeam.length) return res.json({
             message: 'No team found in the DB'
         })
 
@@ -48,8 +48,10 @@ const update = (req, res) => {
 
 // delete team
 const destroy = (req, res) => {
-    db.Team.findByAndDelete(req.params.id, (err, deleteTeam) => {
+    console.log('this is the params id', req.params.id)
+    db.Team.findByIdAndDelete(req.params.id, (err, deleteTeam) => {
         if(err) console.log('Error in deleting team:', err)
+        console.log(deleteTeam)
 
         res.json({
             message: 'Team was deleted successfully!'

@@ -5,8 +5,43 @@ p {
   font-size: larger;
 }
 
-.footer {
+.footer span {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   color: aqua;
 }
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.createForm {
+  width: 50%;
+  margin-left: 15rem;
+}
+
+/* .listOfTournament{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.listOfPlayer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.listOfTeam {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+} */
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+/* use jquery to hide some content */

@@ -1,0 +1,10 @@
+{
+    "player": [
+        {
+            "playerName": "Adam Sheriff",
+            "age": "30",
+            "countryOfOrigin": "Liberia",
+            "playerLocation": "Seattle"
+        }
+    ]
+}
