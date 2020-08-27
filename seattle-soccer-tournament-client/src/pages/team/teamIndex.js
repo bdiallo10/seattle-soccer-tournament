@@ -5,6 +5,7 @@ import TeamCard from '../../components/TeamCard'
 
 //bootstrap imports
 import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
@@ -27,18 +28,27 @@ class teamIndex extends Component {
     render() {
         let teamList = this.state.team.map((team, index) => {
             return(
-                <div>
-                    <h1>Here is a list of all the tournament</h1>
-                    <Link to={`/team/${team._id}`} key={index} >
+                <Container fluid className="card">
+                    <div>
                         <TeamCard {...team} />
+                    <Link to={`/team/${team._id}`} key={index} >
+                        <Button>Visit Team Profile</Button>
                     </Link>
-                </div>
+                    </div>
+                </Container>
             )
         })
         return(
-            <Container fluid className="card">
-                {this.state.team ? teamList: 'Loading...'}
-            </Container>
+            <div>
+                <h1>Here is a list of all the registered team</h1>
+                <p>You can visit each team to join</p>
+                    <Link to={`/team/new`}>
+                            <Button>New Team Registration</Button>
+                    </Link>
+                <div className="card">
+                    {this.state.team ? teamList: 'Loading...'}
+                </div>
+            </div>
         )
     }
 }

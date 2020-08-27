@@ -5,6 +5,7 @@ import TournamentCard from '../../components/TournamentCard'
 
 //bootstrap imports
 import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/esm/Button';
 
 class tournamentIndex extends Component {
     state = {
@@ -23,15 +24,21 @@ class tournamentIndex extends Component {
     render() {
         let tournamentList = this.state.tournament.map((tournament, index) => {
             return (
-                <Link to={`/tournament/${tournament._id}`} key={index}>
-                    <TournamentCard {...tournament} />
-                </Link>
+                <Container fluid className="card">
+                    <div>
+                        <TournamentCard 
+                        {...tournament} />
+                    <Link to={`/tournament/${tournament._id}`} key={index}>
+                        <Button>Visit Tournament Page</Button>
+                    </Link>
+                    </div>
+                </Container>
             )
         })
         return (
-            <Container fluid className="card">
+            <div className="card">
                 {this.state.tournament ? tournamentList: 'Loading...'}
-            </Container>
+            </div>
         );
     }
 }

@@ -22,26 +22,10 @@ p {
   margin-left: 15rem;
 }
 
-/* .listOfTournament{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.listOfPlayer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.listOfTeam {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-} */
-
 .card {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
+
+ 
 /* use jquery to hide some content */

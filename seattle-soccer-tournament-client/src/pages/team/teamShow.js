@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import TeamModel from '../../models/team'
 import TeamCard from '../../components/TeamCard'
-const teamurl =`http://localhost:5000/api/v1`
 
+
+//bootstraps
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+
+const teamurl =`http://localhost:5000/api/v1`
 
 class teamShow extends Component {
     state = {
@@ -16,7 +21,10 @@ class teamShow extends Component {
 
     fetchData = () => {
         TeamModel.show(this.state.currentTeam).then(data => {
-            this.setState({ team: data.team })
+            this.setState({ 
+                team: data.team,
+                title: data.team.teamName
+            })
         })
     }
 
@@ -37,9 +45,16 @@ class teamShow extends Component {
     render() {
         return (
             <div className="individualTeam">
-                <TeamCard {...this.state.team} />
-                <button onClick={this.deleteTeam.bind(this)}>Delete</button>
-                <button>Edit</button>
+                <div>
+                <h1>Welcome to {this.state.title}</h1>
+                </div>
+                <div>
+                    <TeamCard {...this.state.team} />
+                    <Container>
+                        <Button onClick={this.deleteTeam.bind(this)}>Delete</Button>
+                        <Button onClick={() => this.props.history.push('/team/update')}>Edit</Button>
+                    </Container>
+                </div>
             </div>
         );
     }

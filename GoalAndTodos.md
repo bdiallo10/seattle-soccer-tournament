@@ -1,4 +1,5 @@
-Step 1
+To Dos
+
 
 create wireframe and database///DONE
 finish model and mongoose connection//DONE
@@ -18,21 +19,18 @@ Install bootstrap//DONE
 model files are created/DONE
 model fill up the models file/DONE
 
-BLOCKER, BRING IT UP TO TUTORING
-TEST THE BACKEND AND MAKE SURE IT'S WORKING
-NAVBAR IS CREATED BUT IT'S NOT WORKING
-
-
-Step 2
 
 Add all the forms for tournament, team and player//DONE
 Add all the add button, update button and delete button//DONE
 Make sure forms are send data to database//DONE
 
 Add the following button on tournament, team and players
-    a) edit
-    b) delete
+    a) edit//in progress
+    b) delete//Done
 
+BackEnd User Authorization
+FrontEnd User Authorization
+Protect All the routes
 
 MODEL RELATIONSHIP IN REACT
 Keep in mind that that 

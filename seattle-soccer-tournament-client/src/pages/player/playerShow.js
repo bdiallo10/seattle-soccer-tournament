@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import PlayerModel from '../../models/player'
 import PlayerCard from '../../components/PlayerCard'
+
+//bootstraps
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/esm/Col';
+
+
 const playerurl =`http://localhost:5000/api/v1`
 
 
@@ -17,7 +24,10 @@ class playershow extends Component {
 
     fetchData = () => {
         PlayerModel.show(this.state.currentPlayer).then(data => {
-            this.setState({ player: data.player})
+            this.setState({ 
+                player: data.player,
+                name: data.player.playerName
+            })
         })
     }
 
@@ -38,10 +48,14 @@ class playershow extends Component {
     render() {
         return (
             <div className="individualPlayer">
-                {/* <h1>Welcome to {this.state.currentPlayer} </h1> */}
-                <PlayerCard {...this.state.player} />
-                <button onClick={this.deletePlayer.bind(this)}>Delete</button>
-                <button>Edit</button>
+                <h1>Hello I am {this.state.name}</h1>
+                <di>
+                    <PlayerCard {...this.state.player} />
+                    <Container fluid inline>
+                            <Button onClick={this.deletePlayer.bind(this)}>Delete</Button>
+                            <Button onClick={() => this.props.history.push('/player/update/:id')}>Edit</Button>
+                    </Container>
+                </di>
             </div>
         );
     }

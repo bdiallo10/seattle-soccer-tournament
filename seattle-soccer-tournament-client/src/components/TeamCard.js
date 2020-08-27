@@ -5,10 +5,10 @@ import React from 'react';
 const TeamCard = (props) => {
     return (
         <div className="TeamCard">
-            <h3> {props.teamName} </h3>
-            <p> {props.manager} </p>
-            <p> {props.captain} </p>
-            <p> {props.teamLocation} </p>
+            <h3> Team Name: {props.teamName} </h3>
+            <p> Team Manager: {props.manager} </p>
+            <p> Team Captain: {props.captain} </p>
+            <p> Location: {props.teamLocation} </p>
             <p> {props.timestamps } </p>
         </div>
     );

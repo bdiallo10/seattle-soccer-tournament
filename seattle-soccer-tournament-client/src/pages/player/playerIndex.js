@@ -5,6 +5,7 @@ import PlayerCard from '../../components/PlayerCard'
 
 //importing bootstraps
 import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
 
 
 class playerIndex extends Component {
@@ -26,17 +27,27 @@ class playerIndex extends Component {
     render() {
         let playerList = this.state.player.map((player, index) => {
             return (
-                <div>
+                <Container fluid className="card">
+                    <div>
+                        <PlayerCard 
+                        {...player} />
                     <Link to={`/player/${player._id}`} key={index}>
-                        <PlayerCard {...player} />
+                        <Button>Visit Player Profile</Button>
                     </Link>
-                </div>
+                    </div>
+                </Container>
             )
         })
         return (
-            <Container className="card">
-                {this.state.player ? playerList: 'Loading...'}
-            </Container>
+            <div>
+                <h1>Here is a list of all the registered players</h1>
+                <Link to={`/player/new`}>
+                        <Button>New Player Registration</Button>
+                </Link>
+                <div className="card">
+                    {this.state.player ? playerList: 'Loading...'}
+                </div>
+            </div>
         );
     }
 }
