@@ -17,6 +17,7 @@ var index = function index(req, res) {
 
 var show = function show(req, res) {
   db.Player.findById(req.params.id, function (err, foundPlayer) {
+    console.log(foundPlayer);
     if (err) console.log('Error in player showing up:', err);
     if (!foundPlayer) return res.json({
       message: 'No player found by that ID in the DB'
@@ -28,35 +29,43 @@ var show = function show(req, res) {
 };
 
 var create = function create(req, res) {
-  db.Player.create(req.body, function (err, foundPlayer) {
-    if (err) console.log('Error in player create', err); // sending new Player to the database
+  if (req.session.loggedIn) {
+    db.Player.create(req.body, function (err, foundPlayer) {
+      if (err) console.log('Error in player create', err); // sending new Player to the database
 
-    res.json({
-      player: foundPlayer
+      res.json({
+        player: foundPlayer
+      });
     });
-  });
+  } else {
+    window.confirm('You need to logged in to register as a player');
+  }
 };
 
 var update = function update(req, res) {
-  db.Player.findByIdAndUpdate(req.params.id, req.body, {
-    "new": true
-  }, function (err, updatedTournament) {
-    if (err) console.log('Error in updating player: ', err); // send updated Player as a response
+  if (req.session.loggedIn) {
+    db.Player.findByIdAndUpdate(req.params.id, req.body, {
+      "new": true
+    }, function (err, updatedPlayer) {
+      if (err) console.log('Error in updating player: ', err); // send updated Player as a response
 
-    res.json({
-      player: updatedPlayer,
-      message: "Update was successfull"
+      res.json({
+        player: updatedPlayer,
+        message: "Update was successfull"
+      });
     });
-  });
+  }
 };
 
 var destroy = function destroy(req, res) {
-  db.Player.findByIdAndDelete(req.params.id, function (err, deletePlayer) {
-    if (err) console.log('Error in deleting Player', err);
-    res.json({
-      message: 'Player was deleted successfully!'
+  if (req.session.loggedIn) {
+    db.Player.findByIdAndDelete(req.params.id, function (err, deletePlayer) {
+      if (err) console.log('Error in deleting Player', err);
+      res.json({
+        message: 'Player was deleted successfully!'
+      });
     });
-  });
+  }
 };
 
 module.exports = {

@@ -25,28 +25,28 @@ Add all the add button, update button and delete button//DONE
 Make sure forms are send data to database//DONE
 
 Add the following button on tournament, team and players
-    a) edit//in progress
     b) delete//Done
 
-BackEnd User Authorization
-FrontEnd User Authorization
+BackEnd User Authorization//DONE
+FrontEnd User Authorization//DONE
+
+Finish Crud functionality//DONE DONE AND DONE
+
+Use bootstrap to style user authentication forms//DONE
+
+
+finish create a fixture component
+finish add a player to a team component
 Protect All the routes
-
-MODEL RELATIONSHIP IN REACT
-Keep in mind that that 
- a) the same team can exist in all the tournament
- b) Players can only be in one team
+Deploy application
 
 
-Step 3
-Make sure user is fully functional
+ADDITIONAL FEATURES IF TIME PERMIT
+On the tournament show page,
+Add a list of team function where can you choose a team in the database,  display in a container that shows all the team participating that tournament only
+Add a fixture function where you can choose team to display in a box
+the box will be two row and two column, the first column will be teams, the second column would be result
+Add a ranking table function
 
-Step 4
-Protect all the routes
-
-Step 5
-TEST, DEBUG AND TEST, TEST, TEST
-
-
-Step 6
-Try to add fixture and results 
+On the team show page,
+add a list of players function where you can choose players in the database, add them to list

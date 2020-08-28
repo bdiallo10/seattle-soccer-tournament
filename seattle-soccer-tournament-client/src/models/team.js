@@ -23,9 +23,14 @@ class TeamModel {
 
         })
     }
-    static update = (teamId) => {
+    static update = (updatedTeam) => {
+        let teamId = updatedTeam.teamId
         return fetch(`${teamurl}/team/${teamId}`, {
-            method: "PUT"
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedTeam)
         })
         .then(res => res.json())
     }

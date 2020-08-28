@@ -2,8 +2,9 @@
 
 var mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
-var userSchema = new Schema({
+var bcrypt = require('bcrypt');
+
+var UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -19,10 +20,26 @@ var userSchema = new Schema({
   password: {
     type: String,
     required: true
-  } // add download a picture for the player later
-
+  }
 }, {
   timestamps: true
 });
-var User = mongoose.model('User', userSchema);
+UserSchema.methods = {
+  checkPassword: function checkPassword(inputPassword) {
+    return bcrypt.compareSync(inputPassword, this.password);
+  },
+  hashPassword: function hashPassword(plainTextPassword) {
+    var salt = bcrypt.genSaltSync(10);
+    return bcrypt.hashSync(plainTextPassword, salt);
+  }
+};
+UserSchema.pre('save', function (next) {
+  if (!this.password) {
+    next();
+  } else {
+    this.password = this.hashPassword(this.password);
+    next();
+  }
+});
+var User = mongoose.model('User', UserSchema);
 module.exports = User;

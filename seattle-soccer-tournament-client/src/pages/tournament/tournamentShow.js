@@ -24,7 +24,7 @@ class tournamentShow extends Component {
         TournamentModel.show(this.state.currentTournament).then(data => {
             this.setState({ 
                 tournament: data.tournament,
-                title: data.tournament.title
+                title: data.title
             })
         })
     }
@@ -51,7 +51,7 @@ class tournamentShow extends Component {
                     <TournamentCard {...this.state.tournament} />
                     <Container>
                         <Button onClick={this.deleteTournament.bind(this)}>Delete</Button>
-                        <Button onClick={() => this.props.history.push('/tournament/update')}>Edit</Button>
+                        <Button onClick={() => this.props.history.push(`/tournament/update/${this.props.match.params.id}`)}>Edit</Button>
                     </Container>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 0;
 }
 p {
   font-size: larger;
@@ -17,9 +18,13 @@ p {
   justify-content: space-between;
 }
 
+#body {
+  margin: 0;
+}
+
 .createForm {
-  width: 50%;
-  margin-left: 15rem;
+  width: 75%;
+  margin: 5rem;
 }
 
 .card {
@@ -27,5 +32,32 @@ p {
   flex-wrap: wrap;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: greenyellow;
+}
+
+#basic-nav-dropdown {
+  background-color: greenyellow;
+}
  
 /* use jquery to hide some content */

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import PlayerModel from '../../models/player'
 // import PlayerModel from '../../models/player'
-import axios from 'axios';
 
 
 import Form from 'react-bootstrap/Form'
@@ -12,31 +12,31 @@ class playerUpdate extends Component {
     constructor(props){
         super(props)
         this.state = {
-            // id: '',
+            playerId: this.props.match.params.id,
             playerName: '',
             age: '',
             countryOfOrigin: '',
             playerLocation: '',
         }
 
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    componentWillMount(){
+    componentDidMount(){
        this.getPlayerDetails();
     }
 
     
     getPlayerDetails(){
-        let playerId = this.props.match.params.id
-        axios.get(`${playerurl}/player/${this.state.playerId}`)
+        fetch(`${playerurl}/player/${this.props.match.params.id}`)
+        .then(response => response.json())
         .then(response => {
+            console.log(response.player)
             this.setState({
-                // id: response.data.id,
-                playerName: response.data.playerName,
-                age: response.data.age,
-                countryOfOrigin: response.data.countryOfOrigin,
-                playerLocation: response.data.playerLocation
+                playerName: response.player.playerName,
+                age: response.player.age,
+                countryOfOrigin: response.player.countryOfOrigin,
+                playerLocation: response.player.playerLocation
             }, () => {
                 console.log(this.state)
             })
@@ -45,10 +45,10 @@ class playerUpdate extends Component {
     }
 
     editPlayer(newPlayer){
-        axios.request({
+        fetch.request({
             method: 'put',
             url: `${playerurl}/player/${this.state.id}`,
-            data: newPlayer
+            body: newPlayer
         }).then(response => {
             this.props.history.push('/')
         }).catch(err => console.log(err))
@@ -66,28 +66,31 @@ class playerUpdate extends Component {
         this.editPlayer(newPlayer)
     }
     
+    handleSubmit = (event) => {
+        event.preventDefault();
+        PlayerModel.update(this.state)
+            .then(data => {
+                this.props.history.push('/player')
+            })
+    }
 
-    handleInputChange = (e) => {
-        const target = e.target
-        const value = target.value
-        const name = target.name
-
-        this.setState({
-            [name]: value
-        })
+    handleChange = (event) => {
+      this.setState({
+          [event.target.name]: event.target.value
+      })
     }
 
     render(){
         return(
             <div className="createForm">
-               <Form onSubmit={this.onSubmit.bind(this)}>
+               <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formTitle">
                         <Form.Label>Player Name</Form.Label>
                         <Form.Control
                             type="text"
                             name="playerName"
                             refs="playerName"
-                            onChange={this.handleInputChange}
+                            onChange={this.handleChange}
                             value={this.state.playerName}
                         />
 
@@ -96,7 +99,7 @@ class playerUpdate extends Component {
                             type="text" 
                             name="age"
                             refs="age"
-                            onChange={this.handleInputChange}
+                            onChange={this.handleChange}
                             value={this.state.age}
                         />
 
@@ -105,7 +108,7 @@ class playerUpdate extends Component {
                             type="text"
                             name="countryOfOrigin"
                             refs="countryOfOrigin"
-                            onChange={this.handleInputChange}
+                            onChange={this.handleChange}
                             value={this.state.countryOfOrigin}
                         />
 

@@ -23,9 +23,14 @@ class TournamentModel {
 
         })
     }
-    static update = (tournamentId) => {
+    static update = (updatedTournament) => {
+        let tournamentId = updatedTournament.tournamentId
         return fetch(`${tournamenturl}/tournament/${tournamentId}`, {
-            method: "PUT"
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedTournament)
         })
         .then(res => res.json())
     }

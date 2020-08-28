@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 // To home page
 import Home from '../pages/Home'
@@ -22,26 +22,42 @@ import playerShow from '../pages/player/playerShow'
 import playerCreate from '../pages/player/playerCreate'
 import playerUpdate from '../pages/player/playerUpdate'
 
-export default () => (
+// Authorization
+import Login from '../pages/Login'
+import Profile from '../pages/Profile'
+import Register from '../pages/Register'
+
+export default (props) => (
     <BrowserRouter>
-        <div>
+        <Switch>
             <Route exact path='/' component={ Home } />
 
             <Route exact path='/tournament' component={ tournamentIndex } />
-            <Route  exact path='/tournament/:id' component={ tournamentShow } />
             <Route  exact path='/tournament/new' component={ tournamentCreate } />
-            <Route  exact path='/tournament/update/:id' component={ tournamentUpdate } />
+            <Route   path='/tournament/update/:id' component={ tournamentUpdate } />
+            <Route   path='/tournament/:id' component={ tournamentShow } />
             
             <Route exact path='/team' component={ teamIndex } />
-            <Route  exact path='/team/:id' component={ teamShow } />
             <Route  exact path='/team/new' component={ teamCreate } />
-            <Route  exact path='/team/update/:id' component={ teamUpdate } />
+            <Route   path='/team/update/:id' component={ teamUpdate } />
+            <Route   path='/team/:id' component={ teamShow } />
 
             <Route exact path='/player' component={ playerIndex } />
-            <Route exact path='/player/:id' component={ playerShow } />
             <Route exact path='/player/new' component={ playerCreate} />
-            <Route exact path='/player/update/:id' component={ playerUpdate } />
-        </div>
+            <Route  path='/player/update/:id' component={ playerUpdate } />
+            <Route  path='/player/:id' component={ playerShow } />
+
+            <Route exact path='/profile' component={ Profile } />
+            <Route exact path='/register' component = { Register } />
+            <Route exact path='/login' render={ (routeProps ) => {
+                return <Login 
+                    {...routeProps }
+                    storeUser={ props.storeUser }
+                />
+            }}
+            
+            />
+        </Switch>
 
     </BrowserRouter>
 )

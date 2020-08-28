@@ -24,9 +24,15 @@ class PlayerModel {
 
         })
     }
-    static update = (playerId) => {
+    static update = (updatedPlayer) => {
+        let playerId = updatedPlayer.playerId
+        console.log(playerId)
         return fetch(`${playerurl}/player/${playerId}`, {
-            method: "PUT"
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },            
+            body: JSON.stringify(updatedPlayer)
         })
         .then(res => res.json())
     }

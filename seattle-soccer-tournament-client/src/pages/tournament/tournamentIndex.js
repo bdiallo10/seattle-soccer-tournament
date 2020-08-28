@@ -36,8 +36,14 @@ class tournamentIndex extends Component {
             )
         })
         return (
-            <div className="card">
-                {this.state.tournament ? tournamentList: 'Loading...'}
+            <div>
+                <h1>Here is a list of all the tournament</h1>
+                    <Link to={`/tournament/new`}>
+                            <Button>Start A Tournament</Button>
+                    </Link>
+                <div className="card">
+                    {this.state.tournament ? tournamentList: 'Loading...'}
+                </div>
             </div>
         );
     }

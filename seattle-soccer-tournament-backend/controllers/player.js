@@ -15,6 +15,7 @@ const index = (req, res) => {
 
 const show = (req, res) => {
   db.Player.findById(req.params.id, (err, foundPlayer) => {
+    console.log(foundPlayer)
     if(err) console.log('Error in player showing up:', err);
 
     if(!foundPlayer) return res.json({
@@ -26,26 +27,33 @@ const show = (req, res) => {
 }
 
 const create = (req, res) => {
-  db.Player.create(req.body, (err, foundPlayer) => {
-    if(err) console.log('Error in player create', err)
-
-    // sending new Player to the database
-    res.json({player: foundPlayer})
-  })
+  if(req.session.loggedIn) {
+    db.Player.create(req.body, (err, foundPlayer) => {
+      if(err) console.log('Error in player create', err)
+  
+      // sending new Player to the database
+      res.json({player: foundPlayer})
+    })
+  } else {
+    window.confirm('You need to logged in to register as a player')
+  }
 }
 
 const update = (req, res) => {
-  db.Player.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedTournament) => {
-    if(err) console.log('Error in updating player: ', err)
-
-    // send updated Player as a response
-    res.json({
-        player: updatedPlayer,
-        message: "Update was successfull"
+  if(req.session.loggedIn) {
+    db.Player.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedPlayer) => {
+      if(err) console.log('Error in updating player: ', err)
+  
+      // send updated Player as a response
+      res.json({
+          player: updatedPlayer,
+          message: "Update was successfull"
+      })
     })
-  })
+  }
 }
-  const destroy = (req, res) => {
+const destroy = (req, res) => {
+  if(req.session.loggedIn) {
     db.Player.findByIdAndDelete(req.params.id, (err, deletePlayer) => {
       if(err) console.log('Error in deleting Player', err);
 
@@ -53,6 +61,7 @@ const update = (req, res) => {
         message: 'Player was deleted successfully!'
       })
     })
+  }
 }
 
 module.exports = {

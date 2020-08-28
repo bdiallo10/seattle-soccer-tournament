@@ -17,21 +17,24 @@ class teamUpdate extends Component {
             captain: '',
             teamLocation: '',
         }
-        // this.handleInputChange = this.handleInputChange.bind(this)
+        
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.getTeamDetails()
     }
 
     getTeamDetails(){
-        return fetch(`${teamurl}/team/${this.state.teamId}`)
+        fetch(`${teamurl}/team/${this.props.match.params.id}`)
+        .then(response => response.json())
         .then(response => {
+            console.log(response.team)
             this.setState({
-                teamName: response.data.teamName,
-                manager: response.data.manager,
-                captain: response.data.captain,
-                teamLocation: response.data.teamLocation,
+                teamName: response.team.teamName,
+                manager: response.team.manager,
+                captain: response.team.captain,
+                teamLocation: response.team.teamLocation,
             }, () => {
                 console.log(this.state)
             })
@@ -41,9 +44,9 @@ class teamUpdate extends Component {
 
     editTeam(newTeam){
         fetch.request({
-            method: 'PUT',
-            url: `${teamurl}/team/${this.state.teamId}`,
-            data: newTeam
+            method: 'put',
+            url: `${teamurl}/team/${this.state.id}`,
+            body: newTeam
         })
         .then(response => {
             this.props.history.push('/')
@@ -53,17 +56,17 @@ class teamUpdate extends Component {
     onSubmit(e){
         e.preventDefault()
         const newTeam = {
-            teamName: this.refs.teamName.value,
-            manager: this.refs.manager.value,
-            captain: this.refs.captain.value,
-            teamLocation: this.refs.teamLocation.value,
+            teamName: this.refs.teamName,
+            manager: this.refs.manager,
+            captain: this.refs.captain,
+            teamLocation: this.refs.teamLocation,
         }
         this.editTeam(newTeam)
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        TeamModel.PUT(this.state)
+        TeamModel.update(this.state)
             .then(data => {
                 this.props.history.push('/team')
             })
@@ -85,7 +88,6 @@ class teamUpdate extends Component {
                             type="text"
                             name="teamName"
                             refs="teamName"
-                            placeholder="Please enter your team name"
                             onChange={this.handleChange}
                             value={this.state.teamName}
                         />
@@ -95,7 +97,6 @@ class teamUpdate extends Component {
                             type="text"
                             name="manager"
                             refs="manager"
-                            placeholder="Enter Your Team Manager Name"
                             onChange={this.handleChange}
                             value={this.state.manager}
                         />
@@ -105,7 +106,6 @@ class teamUpdate extends Component {
                             type="text" 
                             name="captain"
                             refs="captain"
-                            placeholder="Enter Your Team Captain Name"
                             onChange={this.handleChange}
                             value={this.state.captain}
                         />
@@ -116,7 +116,6 @@ class teamUpdate extends Component {
                             type="text"
                             name="teamLocation"
                             refs="teamLocation"
-                            placeholder="Enter Your Team Location"
                             onChange={this.handleChange}
                             value={this.state.teamLocation}
                         />

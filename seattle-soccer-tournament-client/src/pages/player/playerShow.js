@@ -26,7 +26,7 @@ class playershow extends Component {
         PlayerModel.show(this.state.currentPlayer).then(data => {
             this.setState({ 
                 player: data.player,
-                name: data.player.playerName
+                playerName: data.playerName
             })
         })
     }
@@ -48,14 +48,14 @@ class playershow extends Component {
     render() {
         return (
             <div className="individualPlayer">
-                <h1>Hello I am {this.state.name}</h1>
-                <di>
-                    <PlayerCard {...this.state.player} />
+                <div>
+                    <PlayerCard
+                    {...this.state.player} />
                     <Container fluid inline>
                             <Button onClick={this.deletePlayer.bind(this)}>Delete</Button>
-                            <Button onClick={() => this.props.history.push('/player/update/:id')}>Edit</Button>
+                            <Button onClick={() => this.props.history.push(`/player/update/${this.props.match.params.id}`)}>Edit</Button>
                     </Container>
-                </di>
+                </div>
             </div>
         );
     }

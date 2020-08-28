@@ -17,21 +17,23 @@ class tournamentUpdate extends Component {
             date: '',
             location: '',
         }
-        // this.handleInputChange = this.handleInputChange.bind(this)
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.getTournamentDetails()
     }
 
     getTournamentDetails(){
-        return fetch(`${tournamenturl}/team/${this.state.tournamentId}`)
+        fetch(`${tournamenturl}/tournament/${this.props.match.params.id}`)
+        .then(response => response.json())
         .then(response => {
+            console.log(response.tournament)
             this.setState({
-                title: response.data.title,
-                administrator: response.data.administrator,
-                date: response.data.date,
-                location: response.data.location,
+                title: response.tournament.title,
+                administrator: response.tournament.administrator,
+                date: response.tournament.date,
+                location: response.tournament.location,
             }, () => {
                 console.log(this.state)
             })
@@ -41,9 +43,9 @@ class tournamentUpdate extends Component {
 
     editTournament(newTournament){
         fetch.request({
-            method: 'PUT',
-            url: `${tournamenturl}/tournament/${this.state.tournamentId}`,
-            data: newTournament
+            method: 'put',
+            url: `${tournamenturl}/tournament/${this.state.id}`,
+            body: newTournament
         })
         .then(response => {
             this.props.history.push('/')
@@ -53,17 +55,17 @@ class tournamentUpdate extends Component {
     onSubmit(e){
         e.preventDefault()
         const newTournament = {
-            title: this.refs.title.value,
-            administrator: this.refs.administrator.value,
-            date: this.refs.date.value,
-            location: this.refs.location.value,
+            title: this.refs.title,
+            administrator: this.refs.administrator,
+            date: this.refs.date,
+            location: this.refs.location,
         }
         this.editTournament(newTournament)
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        TournamentModel.PUT(this.state)
+        TournamentModel.update(this.state)
             .then(data => {
                 this.props.history.push('/tournament')
             })
@@ -85,7 +87,6 @@ class tournamentUpdate extends Component {
                             type="text"
                             name="title"
                             refs="title"
-                            placeholder="Enter the title of your tournament"
                             onChange={this.handleChange}
                             value={this.state.title}
                         />
@@ -95,7 +96,6 @@ class tournamentUpdate extends Component {
                             type="text"
                             name="administrator"
                             refs="administrator"
-                            placeholder="Enter the Name of the Tournament Administrator"
                             onChange={this.handleChange}
                             value={this.state.administrator}
                         />
@@ -105,7 +105,6 @@ class tournamentUpdate extends Component {
                             type="text"
                             name="date"
                             refs="date"
-                            placeholder="Enter the start date of your tournament"
                             onChange={this.handleChange}
                             value={this.state.date}
                         />
@@ -117,7 +116,6 @@ class tournamentUpdate extends Component {
                             type="name"
                             name="location"
                             refs="location"
-                            placeholder="Enter the location of your tournament"
                             onChange={this.handleChange}
                             value={this.state.location}
                         />

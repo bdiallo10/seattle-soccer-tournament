@@ -19,5 +19,6 @@ connection.once('open', function () {
 module.exports = {
   Tournament: require('./tournament'),
   Team: require('./team'),
-  Player: require('./player')
+  Player: require('./player'),
+  User: require('./user')
 };

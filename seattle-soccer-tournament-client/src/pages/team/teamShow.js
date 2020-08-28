@@ -23,7 +23,7 @@ class teamShow extends Component {
         TeamModel.show(this.state.currentTeam).then(data => {
             this.setState({ 
                 team: data.team,
-                title: data.team.teamName
+                teamName: data.teamName
             })
         })
     }
@@ -52,7 +52,7 @@ class teamShow extends Component {
                     <TeamCard {...this.state.team} />
                     <Container>
                         <Button onClick={this.deleteTeam.bind(this)}>Delete</Button>
-                        <Button onClick={() => this.props.history.push('/team/update')}>Edit</Button>
+                        <Button onClick={() => this.props.history.push(`/team/update/${this.props.match.params.id}`)}>Edit</Button>
                     </Container>
                 </div>
             </div>

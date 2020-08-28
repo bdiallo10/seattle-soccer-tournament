@@ -41,10 +41,9 @@ class teamIndex extends Component {
         return(
             <div>
                 <h1>Here is a list of all the registered team</h1>
-                <p>You can visit each team to join</p>
-                    <Link to={`/team/new`}>
-                            <Button>New Team Registration</Button>
-                    </Link>
+                <Link to={`/team/new`}>
+                        <Button>New Team Registration</Button>
+                </Link>
                 <div className="card">
                     {this.state.team ? teamList: 'Loading...'}
                 </div>
