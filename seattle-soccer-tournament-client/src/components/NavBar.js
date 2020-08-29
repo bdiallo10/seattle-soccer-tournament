@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 
-import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/esm/Button';
-import Form from 'react-bootstrap/Form'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import FormControl from 'react-bootstrap/FormControl'
-import Jumbotron from 'react-bootstrap/Jumbotron'
 
 
 
-class NavBar extends Component {
-    render() {
+
+const NavBar  = (props) => {
         return (
             <div>
                 <div className="navbar">
@@ -39,14 +32,23 @@ class NavBar extends Component {
                         <li>
                             <Nav.Link href='/Login'>Login</Nav.Link>
                         </li>
-                        <li>
-                            <Nav.Link href='/Logout'>Logout</Nav.Link>
-                        </li>
+                        { props.currentUser ? 
+                            <>
+                                <li>
+                                    <a href='/Logout' onClick={props.logout}>Logout</a>
+                                </li>
+                            </>
+                        :
+                            <>
+                                 {/* <li>
+                                    <a href='/Logout' onClick={props.logout}>Logout</a>
+                                </li> */}
+                            </>
+                        }
                     </ul>
                 </div>
             </div>
         );
-    }
 }
 
 export default NavBar;

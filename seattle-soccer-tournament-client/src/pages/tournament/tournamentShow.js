@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TournamentModel from '../../models/tournament'
+import TeamModel from '../../models/team'
 import TournamentCard from '../../components/TournamentCard'
 
 //importing bootstrap
@@ -46,7 +47,9 @@ class tournamentShow extends Component {
     render() {
         return (
             <div className="individualTeam">
-                <h1>Welcome to {this.state.title} page</h1>
+                <div>
+                    <h1>Welcome to {this.state.tournament.title} Tournament Page</h1>
+                </div>
                 <div>
                     <TournamentCard {...this.state.tournament} />
                     <Container>

@@ -46,7 +46,7 @@ class teamShow extends Component {
         return (
             <div className="individualTeam">
                 <div>
-                <h1>Welcome to {this.state.title}</h1>
+                    <h1>Welcome to {this.state.team.teamName}</h1>
                 </div>
                 <div>
                     <TeamCard {...this.state.team} />
@@ -54,6 +54,9 @@ class teamShow extends Component {
                         <Button onClick={this.deleteTeam.bind(this)}>Delete</Button>
                         <Button onClick={() => this.props.history.push(`/team/update/${this.props.match.params.id}`)}>Edit</Button>
                     </Container>
+                </div>
+                <div>
+                    {/* <AddPlayer /> */}
                 </div>
             </div>
         );

@@ -45,15 +45,19 @@ class playershow extends Component {
         }
     }
 
+
     render() {
         return (
             <div className="individualPlayer">
                 <div>
+                    <h1>Welcome to my profile</h1>
+                </div>
+                <div>
                     <PlayerCard
                     {...this.state.player} />
                     <Container fluid inline>
-                            <Button onClick={this.deletePlayer.bind(this)}>Delete</Button>
-                            <Button onClick={() => this.props.history.push(`/player/update/${this.props.match.params.id}`)}>Edit</Button>
+                        <Button onClick={this.deletePlayer.bind(this)}>Delete</Button>
+                        <Button onClick={() => this.props.history.push(`/player/update/${this.props.match.params.id}`)}>Edit</Button>
                     </Container>
                 </div>
             </div>

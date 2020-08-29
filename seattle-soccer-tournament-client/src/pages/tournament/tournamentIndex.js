@@ -39,7 +39,9 @@ class tournamentIndex extends Component {
             <div>
                 <h1>Here is a list of all the tournament</h1>
                     <Link to={`/tournament/new`}>
+                        {this.props.currentUser && 
                             <Button>Start A Tournament</Button>
+                        }
                     </Link>
                 <div className="card">
                     {this.state.tournament ? tournamentList: 'Loading...'}

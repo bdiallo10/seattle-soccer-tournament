@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import { withRouter} from 'react-router-dom';
+
 import Routes from './config/routes'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -38,13 +40,14 @@ function App(props) {
       <Container fluid id="body">
         <Row className="body">
           <Header 
-            currentUser={ currentUser }
-            logout={ logout }
           />
         </Row>
 
         <Row className="body">
-          <NavBar />
+          <NavBar 
+            currentUser= { currentUser }
+            logout={ logout }
+          />
         </Row>
 
         
@@ -64,4 +67,4 @@ function App(props) {
   );
 }
 
-export default App 
+export default withRouter(App) 

@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 
 
-class playerIndex extends Component {
+class PlayerIndex extends Component {
     state = {
         player: []
     }
@@ -25,6 +25,7 @@ class playerIndex extends Component {
     }
 
     render() {
+        console.log(this.props)
         let playerList = this.state.player.map((player, index) => {
             return (
                 <Container fluid className="card">
@@ -42,7 +43,9 @@ class playerIndex extends Component {
             <div>
                 <h1>Here is a list of all the registered players</h1>
                 <Link to={`/player/new`}>
-                        <Button>New Player Registration</Button>
+                        {this.props.currentUser && 
+                            <Button>New Player Registration</Button>
+                        }
                 </Link>
                 <div className="card">
                     {this.state.player ? playerList: 'Loading...'}
@@ -52,4 +55,4 @@ class playerIndex extends Component {
     }
 }
 
-export default playerIndex;
+export default PlayerIndex;
