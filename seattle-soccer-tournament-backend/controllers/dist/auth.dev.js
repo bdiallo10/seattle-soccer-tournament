@@ -50,6 +50,7 @@ var register = function register(req, res) {
 };
 
 var logout = function logout(req, res) {
+  console.log(req.user);
   if (!req.user) return res.json({
     message: 'No User to log out'
   });

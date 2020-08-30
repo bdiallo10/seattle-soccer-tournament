@@ -12,7 +12,7 @@ const playerurl =`http://localhost:5000/api/v1`
 
 
 
-class playershow extends Component {
+class PlayerShow extends Component {
     state = {
         player: {},
         currentPlayer: this.props.match.params.id
@@ -55,14 +55,16 @@ class playershow extends Component {
                 <div>
                     <PlayerCard
                     {...this.state.player} />
-                    <Container fluid inline>
-                        <Button onClick={this.deletePlayer.bind(this)}>Delete</Button>
-                        <Button onClick={() => this.props.history.push(`/player/update/${this.props.match.params.id}`)}>Edit</Button>
-                    </Container>
+                    {/* {this.props.currentUser &&  */}
+                        <Container fluid inline>
+                            <Button onClick={this.deletePlayer.bind(this)}>Delete</Button>
+                            <Button onClick={() => this.props.history.push(`/player/update/${this.props.match.params.id}`)}>Edit</Button>
+                        </Container>
+                    {/* } */}
                 </div>
             </div>
         );
     }
 }
 
-export default playershow;
+export default PlayerShow;

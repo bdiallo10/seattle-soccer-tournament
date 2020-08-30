@@ -29,41 +29,35 @@ var show = function show(req, res) {
 };
 
 var create = function create(req, res) {
-  if (req.session.loggedIn) {
-    db.Tournament.create(req.body, function (err, saveTournament) {
-      if (err) console.log('Error in tournament create', err); // sending new tournament to the database
+  db.Tournament.create(req.body, function (err, saveTournament) {
+    if (err) console.log('Error in tournament create', err); // sending new tournament to the database
 
-      res.json({
-        tournament: saveTournament
-      });
+    res.json({
+      tournament: saveTournament
     });
-  }
+  });
 };
 
 var update = function update(req, res) {
-  if (req.session.loggedIn) {
-    db.Tournament.findByIdAndUpdate(req.params.id, req.body, {
-      "new": true
-    }, function (err, updatedTournament) {
-      if (err) console.log('Error in updating tournament: ', err); // send updated tournament as a response
+  db.Tournament.findByIdAndUpdate(req.params.id, req.body, {
+    "new": true
+  }, function (err, updatedTournament) {
+    if (err) console.log('Error in updating tournament: ', err); // send updated tournament as a response
 
-      res.json({
-        tournament: updatedTournament,
-        message: "Update was successfull"
-      });
+    res.json({
+      tournament: updatedTournament,
+      message: "Update was successfull"
     });
-  }
+  });
 };
 
 var destroy = function destroy(req, res) {
-  if (req.session.loggedIn) {
-    db.Tournament.findByIdAndDelete(req.params.id, function (err, deleteTournament) {
-      if (err) console.log('Error in deleting tournament', err);
-      res.json({
-        message: 'tournament was deleted successfully!'
-      });
+  db.Tournament.findByIdAndDelete(req.params.id, function (err, deleteTournament) {
+    if (err) console.log('Error in deleting tournament', err);
+    res.json({
+      message: 'tournament was deleted successfully!'
     });
-  }
+  });
 };
 
 module.exports = {

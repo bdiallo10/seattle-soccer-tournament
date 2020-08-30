@@ -7,7 +7,7 @@ import TournamentCard from '../../components/TournamentCard'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/esm/Button';
 
-class tournamentIndex extends Component {
+class TournamentIndex extends Component {
     state = {
         tournament: []
     }
@@ -51,4 +51,4 @@ class tournamentIndex extends Component {
     }
 }
 
-export default tournamentIndex;
+export default TournamentIndex;

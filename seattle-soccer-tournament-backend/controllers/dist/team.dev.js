@@ -32,43 +32,37 @@ var show = function show(req, res) {
 
 
 var create = function create(req, res) {
-  if (req.session.loggedIn) {
-    db.Team.create(req.body, function (err, saveTeam) {
-      if (err) console.log('Error in creating a team', err);
-      res.json({
-        team: saveTeam
-      });
+  db.Team.create(req.body, function (err, saveTeam) {
+    if (err) console.log('Error in creating a team', err);
+    res.json({
+      team: saveTeam
     });
-  }
+  });
 }; // update team
 
 
 var update = function update(req, res) {
-  if (req.session.loggedIn) {
-    db.Team.findByIdAndUpdate(req.params.id, req.body, {
-      "new": true
-    }, function (err, updatedTeam) {
-      if (err) console.log('Error in updating team:', err);
-      res.json({
-        team: updatedTeam,
-        message: "Update was successfull"
-      });
+  db.Team.findByIdAndUpdate(req.params.id, req.body, {
+    "new": true
+  }, function (err, updatedTeam) {
+    if (err) console.log('Error in updating team:', err);
+    res.json({
+      team: updatedTeam,
+      message: "Update was successfull"
     });
-  }
+  });
 }; // delete team
 
 
 var destroy = function destroy(req, res) {
-  if (req.session.loggedIn) {
-    console.log('this is the params id', req.params.id);
-    db.Team.findByIdAndDelete(req.params.id, function (err, deleteTeam) {
-      if (err) console.log('Error in deleting team:', err);
-      console.log(deleteTeam);
-      res.json({
-        message: 'Team was deleted successfully!'
-      });
+  console.log('this is the params id', req.params.id);
+  db.Team.findByIdAndDelete(req.params.id, function (err, deleteTeam) {
+    if (err) console.log('Error in deleting team:', err);
+    console.log(deleteTeam);
+    res.json({
+      message: 'Team was deleted successfully!'
     });
-  }
+  });
 };
 
 module.exports = {

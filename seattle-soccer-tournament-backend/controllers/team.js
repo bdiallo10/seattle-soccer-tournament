@@ -28,18 +28,15 @@ const show = (req, res) => {
 }
 // add new team
 const create = (req, res) => {
-    if(req.session.loggedIn) {
         db.Team.create(req.body, (err, saveTeam) => {
             if(err) console.log('Error in creating a team', err)
     
             res.json({ team: saveTeam })
         })
-    }
 }
 
 // update team
 const update = (req, res) => {
-    if(req.session.loggedIn) {
         db.Team.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedTeam) => {
             if(err) console.log('Error in updating team:', err)
     
@@ -48,12 +45,10 @@ const update = (req, res) => {
                 message: "Update was successfull"
             })
         })
-    }
 }
 
 // delete team
 const destroy = (req, res) => {
-    if(req.session.loggedIn){
         console.log('this is the params id', req.params.id)
         db.Team.findByIdAndDelete(req.params.id, (err, deleteTeam) => {
             if(err) console.log('Error in deleting team:', err)
@@ -63,7 +58,6 @@ const destroy = (req, res) => {
                 message: 'Team was deleted successfully!'
             })
         })
-    }
 }
 
 module.exports = {

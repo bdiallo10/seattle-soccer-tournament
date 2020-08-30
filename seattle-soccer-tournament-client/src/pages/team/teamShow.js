@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TeamModel from '../../models/team'
 import TeamCard from '../../components/TeamCard'
+import AddPlayer from '../../components/AddPlayer'
 
 
 //bootstraps
@@ -9,7 +10,7 @@ import Button from 'react-bootstrap/Button'
 
 const teamurl =`http://localhost:5000/api/v1`
 
-class teamShow extends Component {
+class TeamShow extends Component {
     state = {
         team: {},
         currentTeam: this.props.match.params.id
@@ -50,17 +51,19 @@ class teamShow extends Component {
                 </div>
                 <div>
                     <TeamCard {...this.state.team} />
-                    <Container>
-                        <Button onClick={this.deleteTeam.bind(this)}>Delete</Button>
-                        <Button onClick={() => this.props.history.push(`/team/update/${this.props.match.params.id}`)}>Edit</Button>
-                    </Container>
+                    {/* {this.props.currentUser &&   */}
+                        <Container>
+                            <Button onClick={this.deleteTeam.bind(this)}>Delete</Button>
+                            <Button onClick={() => this.props.history.push(`/team/update/${this.props.match.params.id}`)}>Edit</Button>
+                        </Container>
+                    {/* } */}
                 </div>
                 <div>
-                    {/* <AddPlayer /> */}
+                    <AddPlayer />
                 </div>
             </div>
         );
     }
 }
 
-export default teamShow;
+export default TeamShow;

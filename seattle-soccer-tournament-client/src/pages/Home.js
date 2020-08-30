@@ -9,17 +9,41 @@ import React from 'react';
 const Home = () => {
     return (
         <div>
-            <h1>Welcome to Seattle Soccer Tournament</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <div>
+                <h1>Welcome to Seattle Soccer Tournament</h1>
+                <p>Founded in August 2020</p>
+            </div>
+            <div>
+                <h3>Create Your Free Account</h3>
+                
+                <div>
+                    <h3>Start a Tournament</h3>
+                    <p>With an account, you can start a tournament,
+                        add teams and fixture to the tournament
+                        and update the fixture with result</p>
+                    <p>You can share your tournament link with all the 
+                        teams that are participating in the tournament</p>
+                    <p>With the Free Account, you can also create a team, 
+                        add players to your team</p>
+                </div>
+
+                <div>
+                    <h3>Start a Team</h3>
+                    <p>With an acocunt, you can create a team, add players to your team, 
+                        create a match schedule, update the match with result</p>
+                    <p>You Can also post announcement so you can keep your team up to date</p>
+                </div>
+
+                <div>
+                    <h3>Create a Player Profile</h3>
+                    <p>With a player profile, you can add pictures and videos, 
+                        add information about yourself</p>
+                    <p>After you can customize your profile, you can share it with scout and recruiters</p>
+                </div>
+
+            </div>
+            <div>
+            </div>
         </div>
     )
 }

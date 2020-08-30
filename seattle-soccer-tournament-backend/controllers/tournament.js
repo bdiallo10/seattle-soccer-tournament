@@ -10,7 +10,7 @@ const index = (req, res) => {
     })
 
     res.status(200).json({tournament: foundTournament})
-})
+  })
 }
 
 const show = (req, res) => {
@@ -26,40 +26,34 @@ const show = (req, res) => {
 }
 
 const create = (req, res) => {
-  if(req.session.loggedIn) {
     db.Tournament.create(req.body, (err, saveTournament) => {
       if(err) console.log('Error in tournament create', err)
   
       // sending new tournament to the database
       res.json({tournament: saveTournament})
     })
-  }
 }
 
 const update = (req, res) => {
-  if(req.session.loggedIn) {
-    db.Tournament.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedTournament) => {
-      if(err) console.log('Error in updating tournament: ', err)
-  
-      // send updated tournament as a response
-      res.json({
-        tournament: updatedTournament,
-        message: "Update was successfull"
-      })
+  db.Tournament.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedTournament) => {
+    if(err) console.log('Error in updating tournament: ', err)
+
+    // send updated tournament as a response
+    res.json({
+      tournament: updatedTournament,
+      message: "Update was successfull"
     })
-  }
+  })
 }
 
 const destroy = (req, res) => {
-  if(req.session.loggedIn) {
-    db.Tournament.findByIdAndDelete(req.params.id, (err, deleteTournament) => {
-      if(err) console.log('Error in deleting tournament', err);
+  db.Tournament.findByIdAndDelete(req.params.id, (err, deleteTournament) => {
+    if(err) console.log('Error in deleting tournament', err);
 
-      res.json({
-        message: 'tournament was deleted successfully!'
-      })
+    res.json({
+      message: 'tournament was deleted successfully!'
     })
-  }
+  })
 }
 
 module.exports = {

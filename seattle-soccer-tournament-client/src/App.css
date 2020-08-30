@@ -21,7 +21,9 @@ p {
 #body {
   margin: 0;
 }
-
+.table {
+  width: 150%;
+}
 .createForm {
   width: 75%;
   margin: 5rem;
@@ -58,6 +60,15 @@ li a:hover {
 
 #basic-nav-dropdown {
   background-color: greenyellow;
+}
+
+.table {
+  width: 75%;
+  margin: 1em;
+}
+.createTeam {
+  width: 75%;
+  margin: 1em;
 }
  
 /* use jquery to hide some content */

@@ -5,27 +5,27 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from '../pages/Home'
 
 // To tournament pages
-import TournamentIndex from '../pages/tournament/tournamentIndex'
-import tournamentShow from '../pages/tournament/tournamentShow'
-import tournamentCreate from '../pages/tournament/tournamentCreate'
-import tournamentUpdate from '../pages/tournament/tournamentUpdate'
+import TournamentIndex from '../pages/tournament/tournamentIndex' // good
+import TournamentShow from '../pages/tournament/tournamentShow'
+import tournamentCreate from '../pages/tournament/tournamentCreate' // good
+import tournamentUpdate from '../pages/tournament/tournamentUpdate' // good
 
 // To Team pages
-import TeamIndex from '../pages/team/teamIndex'
-import teamShow from '../pages/team/teamShow'
-import teamCreate from '../pages/team/teamCreate'
-import teamUpdate from '../pages/team/teamUpdate'
+import TeamIndex from '../pages/team/teamIndex' // good
+import TeamShow from '../pages/team/teamShow' 
+import teamCreate from '../pages/team/teamCreate' // good
+import teamUpdate from '../pages/team/teamUpdate' // good
 
 // To player pages
-import PlayerIndex from '../pages/player/playerIndex'
-import playerShow from '../pages/player/playerShow'
-import playerCreate from '../pages/player/playerCreate'
-import playerUpdate from '../pages/player/playerUpdate'
+import PlayerIndex from '../pages/player/playerIndex' // good
+import PlayerShow from '../pages/player/playerShow'
+import playerCreate from '../pages/player/playerCreate' // good
+import playerUpdate from '../pages/player/playerUpdate' // good
 
 // Authorization
-import Login from '../pages/Login'
-import Profile from '../pages/Profile'
-import Register from '../pages/Register'
+import Login from '../pages/Login' // good
+import Profile from '../pages/Profile' // good
+import Register from '../pages/Register' // good
 
 export default (props) => (
     <BrowserRouter>
@@ -35,12 +35,17 @@ export default (props) => (
             <Route exact path='/tournament' render={ () => (
                 <TournamentIndex 
                 {...props}
-            />
+                />
             )
             } />
             <Route  exact path='/tournament/new' component={ tournamentCreate } />
             <Route   path='/tournament/update/:id' component={ tournamentUpdate } />
-            <Route   path='/tournament/:id' component={ tournamentShow } />
+            <Route   path='/tournament/:id' render={ (props) => (
+                <TournamentShow
+                {...props}
+                />
+            )
+            } />
             
             <Route exact path='/team' render={ () => (
                  <TeamIndex 
@@ -50,7 +55,13 @@ export default (props) => (
             } />
             <Route  exact path='/team/new' component={ teamCreate } />
             <Route   path='/team/update/:id' component={ teamUpdate } />
-            <Route   path='/team/:id' component={ teamShow } />
+            <Route   path='/team/:id' render={ (props) => (
+                <TeamShow 
+                {...props}
+                />
+            )
+            } />
+
 
             <Route exact path='/player' render={ () => (
                 <PlayerIndex 
@@ -60,7 +71,14 @@ export default (props) => (
             } />
             <Route exact path='/player/new' component={ playerCreate} />
             <Route  path='/player/update/:id' component={ playerUpdate } />
-            <Route  path='/player/:id' component={ playerShow } />
+            <Route  path='/player/:id' render={ (props) => (
+                <PlayerShow
+                {...props}
+                />
+            )
+            } />
+
+
             <Route exact path='/profile' component={ Profile } />
             <Route exact path='/register' component = { Register } />
             <Route exact path='/login' render={ (routeProps ) => {

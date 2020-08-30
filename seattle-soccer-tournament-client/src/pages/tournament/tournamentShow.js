@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TournamentModel from '../../models/tournament'
-import TeamModel from '../../models/team'
 import TournamentCard from '../../components/TournamentCard'
+import AddTeam from '../../components/AddTeam'
 
 //importing bootstrap
 import Container from 'react-bootstrap/Container'
@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button'
 const tournamenturl =`http://localhost:5000/api/v1`
 
 
-class tournamentShow extends Component {
+class TournamentShow extends Component {
     state = {
         tournament: {},
         currentTournament: this.props.match.params.id
@@ -53,13 +53,15 @@ class tournamentShow extends Component {
                 <div>
                     <TournamentCard {...this.state.tournament} />
                     <Container>
+                    {/* {this.props.currentUser && } */}
                         <Button onClick={this.deleteTournament.bind(this)}>Delete</Button>
                         <Button onClick={() => this.props.history.push(`/tournament/update/${this.props.match.params.id}`)}>Edit</Button>
                     </Container>
+                    <AddTeam />
                 </div>
             </div>
         );
     }
 }
 
-export default tournamentShow;
+export default TournamentShow;

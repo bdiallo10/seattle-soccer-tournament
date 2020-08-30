@@ -26,21 +26,17 @@ const show = (req, res) => {
   })
 }
 
+
 const create = (req, res) => {
-  if(req.session.loggedIn) {
     db.Player.create(req.body, (err, foundPlayer) => {
       if(err) console.log('Error in player create', err)
   
       // sending new Player to the database
       res.json({player: foundPlayer})
     })
-  } else {
-    window.confirm('You need to logged in to register as a player')
-  }
 }
 
 const update = (req, res) => {
-  if(req.session.loggedIn) {
     db.Player.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedPlayer) => {
       if(err) console.log('Error in updating player: ', err)
   
@@ -50,10 +46,8 @@ const update = (req, res) => {
           message: "Update was successfull"
       })
     })
-  }
 }
 const destroy = (req, res) => {
-  if(req.session.loggedIn) {
     db.Player.findByIdAndDelete(req.params.id, (err, deletePlayer) => {
       if(err) console.log('Error in deleting Player', err);
 
@@ -61,7 +55,6 @@ const destroy = (req, res) => {
         message: 'Player was deleted successfully!'
       })
     })
-  }
 }
 
 module.exports = {

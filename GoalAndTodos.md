@@ -35,18 +35,12 @@ Finish Crud functionality//DONE DONE AND DONE
 Use bootstrap to style user authentication forms//DONE
 
 
-finish create a fixture component
-finish add a player to a team component
-Protect All the routes
-Deploy application
+1) Protect All the routes
+2) Deploy application
 
+3) create a form that add data to a table so that // or do a fetch request and find a way to add the data from the fetch request to a table
+    a) Team manager can add players to their team page
+    b) Tournament manager can add teams to their tournament page
+4) create a form that add data to a table, the table should like fixture, result
 
-ADDITIONAL FEATURES IF TIME PERMIT
-On the tournament show page,
-Add a list of team function where can you choose a team in the database,  display in a container that shows all the team participating that tournament only
-Add a fixture function where you can choose team to display in a box
-the box will be two row and two column, the first column will be teams, the second column would be result
-Add a ranking table function
-
-On the team show page,
-add a list of players function where you can choose players in the database, add them to list
+5) Create a relations between teams and players so that players are location to a team page
