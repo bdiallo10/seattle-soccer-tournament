@@ -51,6 +51,4 @@ app.use('/api/v1/team', routes.team)
 app.use('/api/v1/player', routes.player)
 app.use('/api/v1/auth', routes.auth)
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
+app.listen(process.env.PORT || 3000)
