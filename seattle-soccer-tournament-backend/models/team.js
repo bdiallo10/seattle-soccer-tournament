@@ -5,7 +5,11 @@ const teamSchema = new Schema({
     teamName: {type: String, required: true},
     manager: {type: String, required: true},
     captain: {type: String, required: true},
-    teamLocation: {type: String, required: true}
+    teamLocation: {type: String, required: true},
+    players: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Players'
+    }]
     // add downlong a picture for the team later
 }, { timestamps: true,
 })

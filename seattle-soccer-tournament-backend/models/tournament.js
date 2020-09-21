@@ -5,7 +5,11 @@ const tournamentSchema = new Schema({
     title: {type: String, required: true},
     administrator: {type: String, required: true},
     date: {type: String, required: true},
-    location: {type: String, required: true}
+    location: {type: String, required: true},
+    teams: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Teams'
+    }]
     // add download a picture later
 }, {
     timestamps: true,
